@@ -1,0 +1,169 @@
+[
+  {
+    "id": 1,
+    "nombre": "Silla Braco",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2000,
+    "imagen": "./img/silla_braco.png"
+  },
+  {
+    "id": 2,
+    "nombre": "Silla Kurve",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2000,
+    "imagen": "./img/silla_kurve.png"
+  },
+
+  {
+    "id": 3,
+    "nombre": "Silla Pampa",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2000,
+    "imagen": "./img/silla_pampa.png"
+  },
+
+  {
+    "id": 4,
+    "nombre": "Silla Salta",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2000,
+    "imagen": "./img/silla_salta.png"
+  },
+
+  {
+    "id": 5,
+    "nombre": "Silla Tauro",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2000,
+    "imagen": "./img/silla_tauro.png"
+  },
+
+  {
+    "id": 6,
+    "nombre": "Silla Traful",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2000,
+    "imagen": "./img/silla_traful.png"
+  },
+
+  {
+    "id": 7,
+    "nombre": "Silla Lore",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2000,
+    "imagen": "./img/silla_lore.png"
+  },
+
+  {
+    "id": 8,
+    "nombre": "Silla Andes",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2200,
+    "imagen": "./img/silla_andes.png"
+  },
+  {
+    "id": 9,
+    "nombre": "Silla Reina Ana",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2100,
+    "imagen": "./img/silla_reina_ana.png"
+  },
+  {
+    "id": 10,
+    "nombre": "Silla Cuyo",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2300,
+    "imagen": "./img/silla_cuyo.png"
+  },
+  {
+    "id": 11,
+    "nombre": "Silla Patagonia",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2400,
+    "imagen": "./img/silla_patagonia.png"
+  },
+  {
+    "id": 12,
+    "nombre": "Silla Libertad",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2000,
+    "imagen": "./img/silla_libertad.png"
+  },
+  {
+    "id": 13,
+    "nombre": "Silla Aries",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 1900,
+    "imagen": "./img/silla_aries.png"
+  },
+  {
+    "id": 14,
+    "nombre": "Silla Sima",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2050,
+    "imagen": "./img/silla_sima.png"
+  },
+  {
+    "id": 15,
+    "nombre": "Silla Pulpo",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2150,
+    "imagen": "./img/silla_pulpo.png"
+  },
+  {
+    "id": 16,
+    "nombre": "Silla Mare",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2250,
+    "imagen": "./img/silla_mare.png"
+  },
+  {
+    "id": 17,
+    "nombre": "Silla Cielo",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2300,
+    "imagen": "./img/silla_cielo.png"
+  },
+  {
+    "id": 18,
+    "nombre": "Silla Montreal",
+    "descripcion": "Silla Moderna Premium",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2200,
+    "imagen": "./img/silla_montreal.png"
+  },
+
+  {
+    "id": 19,
+    "nombre": "Silla Luna",
+    "descripcion": "Silla de Madera tapizada",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2100,
+    "imagen": "./img/silla_luna.png"
+  },
+  {
+    "id": 20,
+    "nombre": "Silla Vento",
+    "descripcion": "Silla Moderna Premium",
+    "estrellas": "./img/estrellas.png",
+    "precio": 2200,
+    "imagen": "./img/silla_vento.png"
+  }
+]
