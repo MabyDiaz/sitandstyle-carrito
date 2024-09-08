@@ -461,7 +461,7 @@ footer p {
   }
 }
 
-@media (max-width: 500px) {
+@media (max-width: 400px) {
   .banner {
     background-image: url('./img/Banner-sit&stile600.png');
   }
