@@ -456,7 +456,7 @@ footer p {
   }
 
   .cart-table .list-cart .item {
-    width: 450px;
+    width: 100%;
     justify-content: space-between;
   }
 }
