@@ -451,11 +451,17 @@ footer p {
   }
 
   .cart-table {
+    width: 500px;
     margin-top: 75px;
+  }
+
+  .cart-table .list-cart .item {
+    width: 450px;
+    justify-content: space-between;
   }
 }
 
-@media (max-width: 600px) {
+@media (max-width: 500px) {
   .banner {
     background-image: url('./img/Banner-sit&stile600.png');
   }
