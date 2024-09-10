@@ -474,7 +474,7 @@ footer p {
 
   .list-products .product-card {
     width: 100%;
-    height: 550px;
+    height: auto;
     margin-bottom: 20px;
   }
 
@@ -505,7 +505,6 @@ footer p {
 
   .cart-table {
     width: 100%;
-    height: auto;
     right: auto;
     left: 0;
     transform: translateX(100%);
