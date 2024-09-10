@@ -505,6 +505,7 @@ footer p {
 
   .cart-table {
     width: 100%;
+    height: auto;
     right: auto;
     left: 0;
     transform: translateX(100%);
