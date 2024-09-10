@@ -463,14 +463,10 @@ footer p {
   }
 }
 
-@media (max-width: 40px) {
+@media (max-width: 400px) {
   .banner {
     background-image: url('./img/Banner-sit&stile600.png');
   }
-
-  /* main {
-    padding: 0 40px;
-  } */
 
   .list-products {
     margin-top: 10px;
@@ -515,7 +511,7 @@ footer p {
   }
 
   .search-bar {
-    margin-top: 300px;
+    margin-top: 200px;
   }
 
   .search-input {
