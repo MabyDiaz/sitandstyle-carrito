@@ -84,24 +84,42 @@ class Carrito {
         <div class="name">${item.producto.nombre}</div>
         <div class="total-price">$${item.producto.precio}</div>
         <div class="quantity">
-             <button class="minus" onclick="carrito.cambiarCantidad(${
-               item.producto.id
-             }, -1)" ${item.cantidad === 1 ? 'disabled' : ''}>-</button>
-            <span>${item.cantidad}</span>
-            <button class="plus" onclick="carrito.agregarProducto(${
-              item.producto.id
-            })">+</button>
+             <button class="minus" ${
+               item.cantidad === 1 ? 'disabled' : ''
+             }>-</button>
+        <span>${item.cantidad}</span>
+        <button class="plus">+</button>
         </div>
-        <div class="delete-product" onclick="carrito.eliminarProducto(${
-          item.producto.id
-        })">X</div>
-      `;
+        <div class="delete-product">X</div>`;
       carritoDiv.appendChild(itemDiv);
     });
 
     document.getElementById(
       'total'
     ).textContent = `Total: $${this.calcularTotal().toFixed(2)}`;
+
+    // Escuchadores de eventos para los botones plus y minus
+    carritoDiv.querySelectorAll('.plus').forEach((button, index) => {
+      button.addEventListener('click', () => {
+        const item = this.items[index];
+        this.agregarProducto(item.producto.id);
+      });
+    });
+
+    carritoDiv.querySelectorAll('.minus').forEach((button, index) => {
+      button.addEventListener('click', () => {
+        const item = this.items[index];
+        this.cambiarCantidad(item.producto.id, -1);
+      });
+    });
+
+    // Escuchador de evento para el botón de eliminación
+    carritoDiv.querySelectorAll('.delete-product').forEach((button, index) => {
+      button.addEventListener('click', () => {
+        const item = this.items[index];
+        this.eliminarProducto(item.producto.id);
+      });
+    });
   }
 
   guardarCarrito() {
@@ -114,12 +132,12 @@ document.addEventListener('DOMContentLoaded', function () {
   carrito = new Carrito();
   cargarProductos();
 
-  // Agregar el event listener para el botón de búsqueda
+  // Escuchador de evento para el botón de búsqueda
   document
     .querySelector('.search-button')
     .addEventListener('click', buscarProductos);
 
-  // Agregar el event listener para el campo de búsqueda al presionar Enter
+  // Escuchador de evento para el campo de búsqueda al presionar Enter
   document.querySelector('.search-input').addEventListener('keydown', (e) => {
     if (e.key === 'Enter') {
       buscarProductos();
@@ -183,7 +201,7 @@ function mostrarProductos(productosParaMostrar = productos) {
   actualizarPaginacion();
 }
 
-//Mostrar y ocultar el carrito
+// Mostrar y ocultar el carrito
 document.querySelector('.icon-cart').addEventListener('click', () => {
   document.getElementById('carrito').classList.toggle('show');
 });
@@ -194,10 +212,25 @@ document.querySelector('.close').addEventListener('click', () => {
 
 // Método para vaciar el carrito
 function vaciarCarrito() {
-  carrito.items = [];
-  carrito.guardarCarrito();
-  carrito.mostrarCarrito();
-  carrito.actualizarContador();
+  Swal.fire({
+    title: '¿Estás seguro?',
+    text: '¡No podrás deshacer esta acción!',
+    icon: 'warning',
+    showCancelButton: true,
+    confirmButtonColor: '#3085d6',
+    cancelButtonColor: '#d33',
+    confirmButtonText: 'Sí, vaciar carrito',
+    cancelButtonText: 'Cancelar',
+  }).then((result) => {
+    if (result.isConfirmed) {
+      carrito.items = [];
+      carrito.guardarCarrito();
+      carrito.mostrarCarrito();
+      carrito.actualizarContador();
+
+      Swal.fire('¡Vaciado!', 'El carrito ha sido vaciado.', 'success');
+    }
+  });
 }
 
 // Añadir eventos a los botones del carrito

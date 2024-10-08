@@ -298,6 +298,7 @@ footer p {
   border-radius: 10px 0 0 10px;
   margin-top: 50px;
   z-index: 2;
+  transition: all 0.3s ease;
 }
 
 .cart-header {
@@ -431,7 +432,7 @@ footer p {
   background-color: #06796d;
 }
 
-.cart-table.show {
+.cart-table.show { 
   transform: translateX(0);
 }
 
@@ -474,7 +475,7 @@ footer p {
 
   .list-products .product-card {
     width: 100%;
-    height: auto;
+    height: 300px;
     margin-bottom: 20px;
   }
 
