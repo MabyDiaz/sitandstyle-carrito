@@ -245,10 +245,14 @@ function vaciarCarrito() {
         title: '¡Vaciado!',
         text: 'El carrito ha sido vaciado.',
         icon: 'success',
-        confirmButtonText: 'Aceptar',
+        confirmButtonText: 'Ok',
         customClass: {
           confirmButton: 'btn-ok',
         },
+      }).then(() => {
+        // Cierra el carrito y el overlay después de que el usuario presiona "Ok"
+        document.getElementById('carrito').classList.remove('show');
+        document.getElementById('overlay').classList.remove('show-overlay');
       });
     }
   });
