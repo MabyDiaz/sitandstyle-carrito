@@ -161,6 +161,9 @@ async function cargarProductos() {
       icon: 'error',
       title: 'Error al cargar productos',
       text: 'No se pudo cargar la lista de productos. Intenta de nuevo más tarde.',
+      customClass: {
+        confirmButton: 'btn-ok',
+      },
     });
   }
 }
@@ -204,10 +207,18 @@ function mostrarProductos(productosParaMostrar = productos) {
 // Mostrar y ocultar el carrito
 document.querySelector('.icon-cart').addEventListener('click', () => {
   document.getElementById('carrito').classList.toggle('show');
+  document.getElementById('overlay').classList.toggle('show-overlay');
 });
 
 document.querySelector('.close').addEventListener('click', () => {
   document.getElementById('carrito').classList.remove('show');
+  document.getElementById('overlay').classList.remove('show-overlay');
+});
+
+// Cierra el carrito al hacer clic fuera del carrito (en el overlay)
+document.getElementById('overlay').addEventListener('click', () => {
+  document.getElementById('carrito').classList.remove('show');
+  document.getElementById('overlay').classList.remove('show-overlay');
 });
 
 // Método para vaciar el carrito
@@ -217,10 +228,12 @@ function vaciarCarrito() {
     text: '¡No podrás deshacer esta acción!',
     icon: 'warning',
     showCancelButton: true,
-    confirmButtonColor: '#3085d6',
-    cancelButtonColor: '#d33',
     confirmButtonText: 'Sí, vaciar carrito',
     cancelButtonText: 'Cancelar',
+    customClass: {
+      confirmButton: 'btn-confirm',
+      cancelButton: 'btn-cancel',
+    },
   }).then((result) => {
     if (result.isConfirmed) {
       carrito.items = [];
@@ -228,7 +241,15 @@ function vaciarCarrito() {
       carrito.mostrarCarrito();
       carrito.actualizarContador();
 
-      Swal.fire('¡Vaciado!', 'El carrito ha sido vaciado.', 'success');
+      Swal.fire({
+        title: '¡Vaciado!',
+        text: 'El carrito ha sido vaciado.',
+        icon: 'success',
+        confirmButtonText: 'Aceptar',
+        customClass: {
+          confirmButton: 'btn-ok',
+        },
+      });
     }
   });
 }
