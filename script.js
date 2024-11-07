@@ -1,13 +1,4 @@
-class Producto {
-  constructor(id, nombre, descripcion, estrellas, precio, imagen) {
-    this.id = id;
-    this.nombre = nombre;
-    this.descripcion = descripcion;
-    this.estrellas = estrellas;
-    this.precio = precio;
-    this.imagen = imagen;
-  }
-}
+import { Producto, ProductoFisico, ProductoDigital } from './js/productos.js';
 
 class Carrito {
   constructor() {
@@ -152,7 +143,39 @@ const productsPerPage = 6;
 async function cargarProductos() {
   try {
     const response = await fetch('bd.json');
-    productos = await response.json();
+    const data = await response.json();
+
+    productos = data.map((prod) => {
+      if (prod.tipo === 'fisico') {
+        return new ProductoFisico(
+          prod.id,
+          prod.nombre,
+          prod.descripcion,
+          prod.estrellas,
+          prod.precio,
+          prod.imagen,
+          prod.tipo,
+          prod.material,
+          prod.tipoMadera,
+          prod.color,
+          prod.reforzada,
+          prod.tapizada
+        );
+      } else {
+        return new ProductoDigital(
+          prod.id,
+          prod.nombre,
+          prod.descripcion,
+          prod.estrellas,
+          prod.precio,
+          prod.imagen,
+          prod.tipo,
+          prod.formato,
+          prod.peso,
+          prod.urlDescarga
+        );
+      }
+    });
     mostrarProductos(productos);
     actualizarPaginacion();
   } catch (error) {
@@ -180,11 +203,13 @@ function mostrarProductos(productosParaMostrar = productos) {
   productosPagina.forEach((producto) => {
     const productCard = document.createElement('div');
     productCard.className = 'product-card';
+
     productCard.innerHTML = `
         <img src="${producto.imagen}" alt="${producto.nombre}">
+         
         <div class="product-info">
           <h2>${producto.nombre}</h2>
-          <p class="description">${producto.descripcion}</p>
+          <p class="description">${producto.descripcion}</p>         
           <img class="estrellas" src="${producto.estrellas}" alt="Imagen-estrellas">
           <p class="price">$${producto.precio}</p>
           <button class="add-product" data-id="${producto.id}">Agregar al carrito</button>
@@ -345,10 +370,55 @@ function buscarProductos() {
 // Funcionalidad del botón volver
 document.getElementById('volver-busqueda').addEventListener('click', () => {
   document.querySelector('.search-input').value = '';
-  currentPage = 1;
+  // currentPage = 1;
   mostrarProductos(productos);
   document.getElementById('volver-busqueda').style.display = 'none';
 });
+
+// Slider
+const btnLeft = document.querySelector('.btn-left');
+const btnRight = document.querySelector('.btn-right');
+const slider = document.getElementById('slider'); //contenedor que engloba las imagenes
+const sliderSection = document.querySelectorAll('.slider-section');
+
+btnLeft.addEventListener('click', (e) => moveToLeft());
+btnRight.addEventListener('click', (e) => moveToRight());
+
+setInterval(() => {
+  moveToRight();
+}, 3000); // 3s
+
+let operacion = 0;
+let counter = 0;
+let withImg = 100 / sliderSection.length;
+
+function moveToRight() {
+  if (counter >= sliderSection.length - 1) {
+    counter = 0;
+    operacion = 0;
+    slider.style.transform = `translate(-${operacion}%)`;
+    slider.style.transition = 'none';
+    return;
+  }
+  counter++; // se ejecuta cada vez que le doy click al botón derecho
+  operacion = operacion + withImg;
+  slider.style.transform = `translate(-${operacion}%)`;
+  slider.style.transition = 'All .6s ease';
+}
+
+function moveToLeft() {
+  counter--;
+  if (counter < 0) {
+    counter = sliderSection.length - 1; // el contador tiene el valor de la cantidad de imágenes
+    operacion = withImg * (sliderSection.length - 1); // me trae la última posición
+    slider.style.transform = `translate(-${operacion}%)`;
+    slider.style.transition = 'none';
+    return;
+  }
+  operacion = operacion - withImg;
+  slider.style.transform = `translate(-${operacion}%)`;
+  slider.style.transition = 'All .6s ease';
+}
 
 // Inicializar la carga de productos al cargar la página
 cargarProductos();

@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Sit&Style</title>
-    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="./css/style.css">
 
     <!-- Link SweetAlert2 -->
     <link href="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.css" rel="stylesheet">
@@ -13,6 +13,8 @@
     <!-- Link Font Awesome -->
     <script src="https://kit.fontawesome.com/1977d5c537.js" crossorigin="anonymous"></script>
 
+    <!-- Modulo de productos.js -->
+    <script type="module" src="js/productos.js"></script>
 
 </head>
 
@@ -22,6 +24,11 @@
         <div class="nav-content">
             <div class="logo">
                 <p class="p-logo">Sit<span class="y-logo">&</span>Style</p>
+            </div>
+
+            <div class="search-bar">
+                <input type="text" placeholder="Buscar productos..." class="search-input">
+                <button class="search-button"><i class="fas fa-search"></i></button>
             </div>
 
             <div class="icon-cart">
@@ -34,12 +41,24 @@
             </div>
         </div>
 
-        <section class="banner">
-            <div class="search-bar">
-                <input type="text" placeholder="Buscar productos..." class="search-input">
-                <button class="search-button"><i class="fas fa-search"></i></button>
+        <!-- Slider -->
+        <div class="container-carousel">
+            <div class="carouseles" id="slider">
+                <section class="slider-section">
+                    <img src="img/slider.jpg">
+                </section>
+                <section class="slider-section">
+                    <img src="img/slider1.jpg">
+                </section>
+                <section class="slider-section">
+                    <img src="img/slider2.jpg">
+                </section>
             </div>
-        </section>
+
+            <div class="btn-left"><i class="fa-solid fa-angles-left"></i></div>
+            <div class="btn-right"><i class="fa-solid fa-angles-right"></i></div>
+
+        </div>
 
     </header>
 
