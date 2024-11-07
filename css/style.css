@@ -167,13 +167,14 @@ body {
 
 /* Main - Lista de productos */
 main {
-  width: 80%;
+  width: 90%;
   height: auto;
   flex: 1;
   margin: 0 auto;
 }
 
 .list-products {
+  width: 100%;
   display: flex;
   flex-wrap: wrap;
   justify-content: center;
