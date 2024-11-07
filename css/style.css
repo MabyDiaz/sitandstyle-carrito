@@ -551,10 +551,18 @@ footer p {
 
 /* Responsive */
 @media (max-width: 1024px) {
-  .banner {
-    margin-top: 40px;
-    background-image: url('../img/Banner-sit&stile1024.png');
-    background-position: center;
+  /* Slider */
+  .container-carousel {
+    width: 400px;
+    height: auto;
+    margin-top: 80px;
+  }
+
+  .btn-left,
+  .btn-right {
+    font-size: 0.7rem;
+    font-weight: 600;
+    padding: 6px;
   }
 
   .search-bar {
@@ -578,10 +586,6 @@ footer p {
 }
 
 @media (max-width: 400px) {
-  .banner {
-    background-image: url('../img/Banner-sit&stile600.png');
-  }
-
   .list-products {
     margin-top: 10px;
   }
