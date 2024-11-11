@@ -1,4 +1,5 @@
-import { Producto, ProductoFisico, ProductoDigital } from './js/productos.js';
+import { Producto, ProductoFisico, ProductoDigital } from './productos.js';
+import { finalizarCompra } from './checkout.js';
 
 class Carrito {
   constructor() {
@@ -118,10 +119,13 @@ class Carrito {
   }
 }
 
-let carrito;
+export let carrito;
+let productos = [];
+
 document.addEventListener('DOMContentLoaded', function () {
   carrito = new Carrito();
   cargarProductos();
+  cargarmenuHamburguesa();
 
   // Escuchador de evento para el botón de búsqueda
   document
@@ -136,7 +140,6 @@ document.addEventListener('DOMContentLoaded', function () {
   });
 });
 
-let productos = [];
 let currentPage = 1;
 const productsPerPage = 6;
 
@@ -218,7 +221,7 @@ function mostrarProductos(productosParaMostrar = productos) {
     productosDiv.appendChild(productCard);
   });
 
-  // Agrega un listener de clic a los botones de agregar al carrito
+  // Escuchadores para los botones de agregar al carrito
   document.querySelectorAll('.add-product').forEach((button) => {
     button.addEventListener('click', (e) => {
       const id = parseInt(e.target.getAttribute('data-id'), 10);
@@ -283,7 +286,7 @@ function vaciarCarrito() {
   });
 }
 
-// Añadir eventos a los botones del carrito
+// Escuchador para el botón: Vaciar el carrito
 document.querySelector('.clear-cart').addEventListener('click', vaciarCarrito);
 
 //Función para cerrar el carrito con la x
@@ -379,16 +382,20 @@ document.getElementById('volver-busqueda').addEventListener('click', () => {
 const btnLeft = document.querySelector('.btn-left');
 const btnRight = document.querySelector('.btn-right');
 const slider = document.getElementById('slider'); //contenedor que engloba las imagenes
-const sliderSection = document.querySelectorAll('.slider-section');
+const sliderSection = document.querySelectorAll('.slider-section'); //toma todos los elementos que tengan la clase slider-section
 
+// Escuchadores para los botones left y right (para realizar el movimiento al presionar los botones)
 btnLeft.addEventListener('click', (e) => moveToLeft());
 btnRight.addEventListener('click', (e) => moveToRight());
 
+// Set Interval permite realizar una función (moveToRight()) luego de x tiempo (segundos) -
+// para que realice el movimiento en forma automática
 setInterval(() => {
   moveToRight();
+  1 < 1;
 }, 3000); // 3s
 
-let operacion = 0;
+let operacion = 0; // acumulador
 let counter = 0;
 let withImg = 100 / sliderSection.length;
 
@@ -418,6 +425,31 @@ function moveToLeft() {
   operacion = operacion - withImg;
   slider.style.transform = `translate(-${operacion}%)`;
   slider.style.transition = 'All .6s ease';
+}
+
+// Escuchador de evento para el botón "Finalizar compra"
+document.querySelector('.checkOut').addEventListener('click', finalizarCompra);
+
+function cargarmenuHamburguesa() {
+  // Menú hamburguesa
+  // Selección de elementos
+  const abrirMenu = document.getElementById('abrir');
+  const cerrarMenu = document.getElementById('cerrar');
+  const nav = document.getElementById('nav');
+
+  // Evento para abrir el menú hamburguesa
+  abrirMenu.addEventListener('click', () => {
+    nav.classList.add('active'); // Mostrar el menú
+    abrirMenu.style.display = 'none'; // Ocultar el botón hamburguesa
+    cerrarMenu.style.display = 'block'; // Mostrar el botón de cerrar
+  });
+
+  // Evento para cerrar el menú hamburguesa
+  cerrarMenu.addEventListener('click', () => {
+    nav.classList.remove('active'); // Ocultar el menú
+    abrirMenu.style.display = 'block'; // Mostrar el botón hamburguesa
+    cerrarMenu.style.display = 'none'; // Ocultar el botón de cerrar
+  });
 }
 
 // Inicializar la carga de productos al cargar la página
