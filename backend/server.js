@@ -2,8 +2,11 @@ import express from 'express';
 import cors from 'cors'; // Para evitar errores que surjan en relación a alguna medida de seguridad que tengan los navegadores
 import dotenv from 'dotenv';
 import path from 'path';
+import mpRoutes from './routes/mp_routes.js';
 import { fileURLToPath } from 'url';
-import { createPreference } from './mercado_pago.js';
+import { dirname } from 'path';
+
+
 
 dotenv.config(); //carga las variables de entorno definidas en el archivo .env y permite acceder a ellas a través de process.env
 
@@ -17,10 +20,13 @@ app.get('/get_public_key', (req, res) => {
 
 // Configuración de __dirname para ES6
 const __filename = fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
+const __dirname = dirname(__filename);
 
 app.use(cors()); // Habilita cors (le dice que utilice cors)
 app.use(express.json()); // Le pide a express que utilice el formato json, es decir que use json en las solicitudes
+
+// Le digo que utilice la ruta mpRoutes
+app.use(mpRoutes);
 
 // Middleware para servir archivos estáticos desde la carpeta frontend
 app.use(express.static(path.join(__dirname, '..', 'frontend')));
@@ -32,15 +38,18 @@ app.get('/', (req, res) => {
 
 // Ruta para la página "Nosotros"
 app.get('/nosotros', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend', 'pages', 'nosotros.html'));
+  res.sendFile(path.join(__dirname, '..', 'frontend', 'nosotros.html'));
 });
 
 // Ruta para la página "Contacto"
 app.get('/contacto', (req, res) => {
-  res.sendFile(path.join(__dirname, 'frontend', 'pages', 'contacto.html'));
+  res.sendFile(path.join(__dirname, '..', 'frontend', 'contacto.html'));
 });
 
-app.post('/create_preference', createPreference);
+// Ruta para la página "Contacto"
+app.get('/metodo_pago', (req, res) => {
+  res.sendFile(path.join(__dirname, '..', 'frontend', 'metodo_pago.html'));
+});
 
 app.listen(PORT, () => {
   console.log(`Servidor escuchando en el puerto ${PORT}`);
