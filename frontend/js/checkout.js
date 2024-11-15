@@ -29,27 +29,23 @@ function finalizarCompra() {
     },
   }).then((result) => {
     if (result.isConfirmed) {
+      // Guarda los datos del carrito en sessionStorage
+      sessionStorage.setItem('carritoItems', JSON.stringify(carrito.items));
+      sessionStorage.setItem('totalCompra', totalCompra.toFixed(2));
+
+      // Redirige a la página metodo_pago.html
+      window.location.href = 'metodo_pago.html';
+
       carrito.items = []; // Limpiar el carrito
       carrito.guardarCarrito();
       carrito.mostrarCarrito();
       carrito.actualizarContador();
 
-      Swal.fire({
-        title: 'Compra realizada',
-        text: '¡Gracias por tu compra!',
-        icon: 'success',
-        confirmButtonText: 'Ok',
-        customClass: {
-          confirmButton: 'btn-ok',
-        },
-      }).then(() => {
-        // Cierra el carrito y el overlay después de que el usuario presiona "Ok"
-        const carritoElement = document.getElementById('carrito');
-        const overlayElement = document.getElementById('overlay');
+      const carritoElement = document.getElementById('carrito');
+      const overlayElement = document.getElementById('overlay');
 
-        if (carritoElement) carritoElement.classList.remove('show');
-        if (overlayElement) overlayElement.classList.remove('show-overlay');
-      });
+      if (carritoElement) carritoElement.classList.remove('show');
+      if (overlayElement) overlayElement.classList.remove('show-overlay');
     }
   });
 }

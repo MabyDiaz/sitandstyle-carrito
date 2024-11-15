@@ -14,14 +14,16 @@
     <script src="https://kit.fontawesome.com/1977d5c537.js" crossorigin="anonymous"></script>
 
     <!-- Modulo de productos.js -->
-    <script type="module" src="js/productos.js"></script>
+    <script type="module" src="./js/productos.js"></script>
+    <script type="module" src="./js/checkout.js"></script>
+    <script type="module" src="./js/metodos_pagos.js"></script>
 
     <!-- SDK MercadoPago -->
     <script src="https://sdk.mercadopago.com/js/v2"></script>
 
 </head>
 
-<body class="container">
+<body class="container tienda">
 
     <header class="header">
         <div class="nav-content">
@@ -32,8 +34,8 @@
             <nav class="nav" id="nav">
                 <ul class="nav-list">
                     <li><a href="./index.html">Tienda</a></li>
-                    <li><a href="./pages/nosotros.html">Nosotros</a></li>
-                    <li><a href="./pages/contacto.html">Contacto</a></li>
+                    <li><a href="./nosotros.html">Nosotros</a></li>
+                    <li><a href="./contacto.html">Contacto</a></li>
                 </ul>
             </nav>
 
@@ -77,7 +79,7 @@
 
 
         <section class="list-products" id="productos">
-            <!-- Los productos se cargarán aquí desde el JavaScript -->
+            <!-- Los productos se cargan aquí desde el JavaScript -->
         </section>
 
         <button id="volver-busqueda" style="display: none;"><i class="fas fa-angle-double-left"></i></button>
@@ -93,7 +95,7 @@
         <aside class="cart-table" id="carrito">
             <div class="cart-header">
                 <h2>Carrito de Compras</h2>
-                <button class="close" onclick="toggleCarrito()">✖</button>
+                <button class="close">✖</button>
             </div>
             <div class="subtitle">
                 <h5>Imagen</h5>
@@ -109,8 +111,6 @@
             <div class="btn">
                 <button class="clear-cart">Vaciar carrito</button>
                 <button class="checkOut">Finalizar Compra</button>
-                <!-- Contenedor donde se creará el botón de pago -->
-                <div id='wallet_container'></div>;
             </div>
         </aside>
 

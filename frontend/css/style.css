@@ -3,8 +3,9 @@
 
 @import url('./nosotros.css');
 @import url('./contacto.css');
+@import url('./metodo_pago.css');
 
-/* Reseteo general básico */
+/* Reseteo básico */
 * {
   margin: 0;
   padding: 0;
@@ -178,7 +179,7 @@ main {
 
 .slider-section {
   width: calc(100% / 3);
-  height: 100%;
+  height: auto;
 }
 
 .slider-section img {
@@ -243,6 +244,7 @@ main {
   box-shadow: 8px 8px 8px rgba(3, 59, 53, 0.5);
   height: 420px;
   margin: 10px;
+  transition: transform 1s ease;
 }
 
 .list-products .product-card:hover {
@@ -289,6 +291,7 @@ main {
   border-radius: 5px;
   font-size: 0.8rem;
   cursor: pointer;
+  transition: all 0.5s ease;
 }
 
 .list-products .product-card .product-info .add-product:hover {
@@ -307,6 +310,7 @@ main {
   padding: 10px 20px;
   cursor: pointer;
   margin: 0px 15px;
+  transition: background-color 0.5s ease;
 }
 
 #volver-busqueda:hover {
@@ -340,7 +344,7 @@ main {
   color: #ffffff;
   cursor: pointer;
   border-radius: 5px;
-  transition: background-color 0.3s, color 0.3s;
+  transition: all 0.3s ease;
 }
 
 .pagination button:hover {
@@ -410,7 +414,7 @@ footer p {
   border-radius: 10px 0 0 10px;
   margin-top: 110px;
   transform: translateX(100%);
-  transition: all 0.3s ease ease-in-out;
+  transition: all 0.3s ease-in-out;
   z-index: 3;
 }
 
@@ -451,7 +455,6 @@ footer p {
 
 .cart-table .list-cart {
   flex: 1;
-  overflow-y: auto;
   margin-bottom: 10px;
 }
 
@@ -551,7 +554,7 @@ footer p {
   cursor: pointer;
   padding: 10px;
   border-radius: 5px;
-  transition: background-color 0.3s ease;
+  transition: all 0.3s ease;
 }
 
 .cart-table .btn button:hover {
@@ -595,6 +598,12 @@ footer p {
   border: 2.5px solid #a00;
 }
 
+.carrito-vacio {
+  font-weight: 600;
+  text-align: center;
+  margin-top: 100px;
+}
+
 /* Responsive */
 @media (max-width: 1024px) {
   /* Slider */
@@ -625,11 +634,6 @@ footer p {
 @media (max-width: 768px) {
   main {
     margin: 100px auto 20px;
-  }
-
-  .container-carousel {
-    width: 100%;
-    height: auto;
   }
 
   /* Ocultar la barra de navegación y mostrar el botón hamburguesa */
@@ -710,7 +714,7 @@ footer p {
   }
 }
 
-@media (max-width: 385px) {
+@media (max-width: 400px) {
   .logo {
     font-size: 1.5rem;
   }
