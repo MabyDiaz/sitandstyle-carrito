@@ -1,0 +1,16 @@
+services:
+  - type: web
+    name: sitandstyle-backend
+    env: node
+    plan: free
+    rootDir: backend
+    buildCommand: npm install
+    startCommand: npm start
+
+  - type: web
+    name: sitandstyle-frontend
+    env: static
+    plan: free
+    rootDir: frontend
+    buildCommand: npm install && npm run build
+    staticPublishPath: dist
