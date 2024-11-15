@@ -36,7 +36,7 @@ export const createOrder = async (req, res) => {
         failure: 'http://localhost:3000/failure',
         pending: 'http://localhost:3000/pending',
       },
-      notification_url: 'https://e8e4262122c68f2cb080072a06555488.serveo.net',
+      notification_url: 'https://89b38fb8187850043ebe59e51b8968a4.serveo.net',
     });
 
     console.log(result);
